@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.MatteBorder;
+import java.awt.*;
 
 public class Contact implements Component {
     private String name;
@@ -6,6 +8,7 @@ public class Contact implements Component {
 
     Contact(String name) {
         this.name = name;
+        this.panel.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
         this.panel.add(new JLabel(name));
     }
 

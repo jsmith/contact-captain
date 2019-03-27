@@ -1,26 +1,28 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Client {
     public static void main(String[] args) {
-        //creating instance of JFrame
-        JFrame frame = new JFrame("Contact Captain");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        EventQueue.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception ignored) {}
 
-        // creating instance of JButton
-        JButton button = new JButton("click");
+            JFrame frame = new JFrame("Test");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            ContactCaptain captain = new ContactCaptain();
 
-        // x axis, y axis, width, height
-        button.setBounds(130,100,100, 40);
+            JPanel panel = captain.getComponent();
+            frame.add(panel);
 
-        // adding button in JFrame
-        frame.add(button);
+            Store store = new Store(captain);
 
-        frame.setContentPane(new ContactCaptain().getComponent());
+            captain.addContact(e -> store.addContact());
+            frame.setJMenuBar(new CaptainMenuBar(store));
 
-        // 400 width and 500 height
-        frame.setSize(260,200);
-
-        // making the frame visible
-        frame.setVisible(true);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
     }
 }

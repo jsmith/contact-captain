@@ -1,31 +1,33 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 class ContactCaptain implements Component {
-    private DefaultListModel<String> model = new DefaultListModel<>();
     private JPanel panel = new JPanel();
-    private int counter = 15;
+    private ContactList list = new ContactList();
+    private JButton add = new JButton("Add Contact");
 
     ContactCaptain() {
-        ContactList contacts = new ContactList();
-
-        JButton addButton = new JButton("Add Element");
-        JButton removeButton = new JButton("Remove Element");
-
-        addButton.addActionListener(e -> {
-            model.addElement("Element " + counter);
-            counter++;
-        });
-        removeButton.addActionListener(e -> {
-            if (model.getSize() > 0) {
-                model.removeElementAt(0);
-            }
-        });
-
         this.panel.setLayout(new BorderLayout());
-        this.panel.add(contacts.getComponent(), BorderLayout.NORTH);
-        this.panel.add(addButton, BorderLayout.WEST);
-        this.panel.add(removeButton, BorderLayout.EAST);
+        this.panel.add(this.list.getComponent());
+
+//        add.addActionListener(e -> {
+//            Contact contact = new Contact("Contact");
+//            this.list.add(contact);
+//            this.panel.validate();
+//            this.panel.repaint();
+//        });
+
+        this.panel.setPreferredSize(new Dimension(200, 200));
+        this.panel.add(add, BorderLayout.SOUTH);
+    }
+
+    ContactList getContactList() {
+        return this.list;
+    }
+
+    void addContact(ActionListener listener) {
+        this.add.addActionListener(listener);
     }
 
     @Override

@@ -1,24 +1,37 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
+import java.util.ArrayList;
 
 class ContactList implements Component {
-    private JPanel panel;
+    private JPanel list = new JPanel(new GridBagLayout());
+    private List<Contact> contacts = new ArrayList<>();
     private JScrollPane pane;
 
     ContactList() {
-        this.panel = new JPanel();
-        this.panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        this.pane = new JScrollPane(panel);
-        panel.setPreferredSize(new Dimension(260, 500));
-
-
-        for (int i = 0; i < 15; i++) {
-            this.panel.add(new Contact("Element " + i).getComponent());
-        }
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        this.list.add(new JPanel(), gbc);
+        this.pane = new JScrollPane(this.list);
     }
 
-    public void add(Contact contact) {
-        this.panel.add(contact.getComponent());
+    void add(Contact contact) {
+        GridBagConstraints gbc1 = new GridBagConstraints();
+        gbc1.gridwidth = GridBagConstraints.REMAINDER;
+        gbc1.weightx = 1;
+        gbc1.fill = GridBagConstraints.HORIZONTAL;
+        this.list.add(contact.getComponent(), gbc1, 0);
+        this.contacts.add(contact);
+    }
+
+    void pop() {
+        int i = this.contacts.size() - 1;
+        this.list.remove(i);
+        this.contacts.remove(i);
+        this.list.revalidate();
+        this.list.repaint();
     }
 
     @Override
