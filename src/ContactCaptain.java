@@ -1,20 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 
-class ContactCaptain extends JPanel {
-    private DefaultListModel<String> model;
+class ContactCaptain implements Component {
+    private DefaultListModel<String> model = new DefaultListModel<>();
+    private JPanel panel = new JPanel();
     private int counter = 15;
 
     ContactCaptain() {
-        setLayout(new BorderLayout());
-        model = new DefaultListModel<>();
-        JList<String> list = new JList<>(model);
-        JScrollPane pane = new JScrollPane(list);
+        ContactList contacts = new ContactList();
+
         JButton addButton = new JButton("Add Element");
         JButton removeButton = new JButton("Remove Element");
-        for (int i = 0; i < 15; i++) {
-            model.addElement("Element " + i);
-        }
 
         addButton.addActionListener(e -> {
             model.addElement("Element " + counter);
@@ -24,11 +20,16 @@ class ContactCaptain extends JPanel {
             if (model.getSize() > 0) {
                 model.removeElementAt(0);
             }
-
         });
 
-        add(pane, BorderLayout.NORTH);
-        add(addButton, BorderLayout.WEST);
-        add(removeButton, BorderLayout.EAST);
+        this.panel.setLayout(new BorderLayout());
+        this.panel.add(contacts.getComponent(), BorderLayout.NORTH);
+        this.panel.add(addButton, BorderLayout.WEST);
+        this.panel.add(removeButton, BorderLayout.EAST);
+    }
+
+    @Override
+    public JPanel getComponent() {
+        return this.panel;
     }
 }

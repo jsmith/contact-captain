@@ -15,7 +15,7 @@ public class Client {
         // adding button in JFrame
         frame.add(button);
 
-        frame.setContentPane(new ContactCaptain());
+        frame.setContentPane(new ContactCaptain().getComponent());
 
         // 400 width and 500 height
         frame.setSize(260,200);

@@ -15,9 +15,9 @@ For this project, you need to submit the following 3 artefacts in a single zip f
 Exported Design model with the main class diagram of your software application in Rational Software Architect Designer. In the class diagram, you only need to give class names and their relationships without class attributes/variables and operations/methods. 
 A PDF document in which you need to describe how each of the architectural and design patterns is implemented in your application.
 Exported source code of your Java application in Eclipse or Rational Software Architect Designer.
- 
-
- 
 
 # Application Suggestion
 Write an application to schedule courses for the Bachelor of Computer Science undergraduate program. The system works as follows: professors receive teaching assignments and enter them into the system; they express preferences on their teaching times and enter them into the system; then courses are all combined into a single timetable, maximizing the number of teaching time preferences that can be accommodated. Some constraints on the courses are that there is a limited number of classes, each with a specified capacity (the user can enter these classes in the system); that one professor cannot teach in two courses at the same time; and a student who attends the program as indicated in the program schedule (which as well can be entered by the user) will be able to attend every course in her/his schedule for the semester. Electives can be superimposed, but there must be at least enough scheduled separately that a student can complete every semester of a program; whereas core courses cannot be superimposed. If you wish to use a model for the program, feel free to adapt the Computer Science program in the calendar, although the program described is not sophisticated enough to understand the distinction among electives. The design of this program lends itself to the use of both architectural and design patterns. Feel free to use an object-based database (as simple as just serializable Java objects), but other more formal databases (like SQL) can be used. Please gauge the complexity of this program, especially the matching algorithms, very carefully: the project is not about succeeding in implementing an optimal scheduling algorithm, but rather about implementing architectural and design patterns to create the project. The timeliness of your submission is paramount.
+
+# Links
+- [Swing Overview](http://web.mit.edu/6.005/www/sp14/psets/ps4/java-6-tutorial/components.html)
