@@ -8,18 +8,17 @@ public class Client {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception ignored) {}
 
-            JFrame frame = new JFrame("Test");
+            JFrame frame = new JFrame("Contact Captain");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             ContactCaptain captain = new ContactCaptain();
 
             JPanel panel = captain.getComponent();
             frame.add(panel);
 
-            Store store = new Store(captain);
+            SystemFacade facade = new SystemFacade(captain);
 
-            captain.addContact(e -> store.addContact());
-            frame.setJMenuBar(new CaptainMenuBar(store));
-            frame.addKeyListener(new CaptainShortcuts(store));
+            captain.addContact(e -> facade.newContact());
+            frame.setJMenuBar(new CaptainMenuBar(facade));
 
             frame.pack();
             frame.setLocationRelativeTo(null);

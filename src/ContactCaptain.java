@@ -2,22 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-class ContactCaptain implements Component {
+class ContactCaptain extends Component<JPanel> {
     private JPanel panel = new JPanel();
     private ContactList list = new ContactList();
     private JButton add = new JButton("Add Contact");
 
     ContactCaptain() {
         this.panel.setLayout(new BorderLayout());
-        this.panel.add(this.list.getComponent());
-
-//        add.addActionListener(e -> {
-//            Contact contact = new Contact("Contact");
-//            this.list.add(contact);
-//            this.panel.validate();
-//            this.panel.repaint();
-//        });
-
+        this.panel.add(new ScrollPaneDecorator(this.list.getComponent()).getComponent());
         this.panel.setPreferredSize(new Dimension(200, 200));
         this.panel.add(add, BorderLayout.SOUTH);
     }
@@ -31,7 +23,7 @@ class ContactCaptain implements Component {
     }
 
     @Override
-    public JPanel getComponent() {
+    protected JPanel makeComponent() {
         return this.panel;
     }
 }

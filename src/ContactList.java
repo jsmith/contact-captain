@@ -3,10 +3,9 @@ import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
 
-class ContactList implements Component {
+class ContactList extends Component {
     private JPanel list = new JPanel(new GridBagLayout());
     private List<Contact> contacts = new ArrayList<>();
-    private JScrollPane pane;
 
     ContactList() {
         GridBagConstraints gbc = new GridBagConstraints();
@@ -14,22 +13,17 @@ class ContactList implements Component {
         gbc.weightx = 1;
         gbc.weighty = 1;
         this.list.add(new JPanel(), gbc);
-        this.pane = new JScrollPane(this.list);
     }
 
     void add(Contact contact) {
-        GridBagConstraints gbc1 = new GridBagConstraints();
-        gbc1.gridwidth = GridBagConstraints.REMAINDER;
-        gbc1.weightx = 1;
-        gbc1.fill = GridBagConstraints.HORIZONTAL;
-        this.list.add(contact.getComponent(), gbc1, this.contacts.size());
-        this.contacts.add(contact);
-        this.list.revalidate();
-        this.list.repaint();
+        this.insert(contact, this.contacts.size());
     }
 
     void pop() {
-        int i = this.contacts.size() - 1;
+        this.remove(this.contacts.size() - 1);
+    }
+
+    void remove(int i) {
         this.list.remove(i);
         this.contacts.remove(i);
         this.list.revalidate();
@@ -40,8 +34,19 @@ class ContactList implements Component {
         return this.contacts.size();
     }
 
+    void insert(Contact contact, int i) {
+        GridBagConstraints gbc1 = new GridBagConstraints();
+        gbc1.gridwidth = GridBagConstraints.REMAINDER;
+        gbc1.weightx = 1;
+        gbc1.fill = GridBagConstraints.HORIZONTAL;
+        this.list.add(contact.getComponent(), gbc1, i);
+        this.contacts.add(contact);
+        this.list.revalidate();
+        this.list.repaint();
+    }
+
     @Override
-    public JComponent getComponent() {
-        return this.pane;
+    protected JComponent makeComponent() {
+        return this.list;
     }
 }

@@ -34,19 +34,19 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 ## Structural
 - [ ] Adaptor
 - [ ] Bridge
-- [ ] Decorator
-- [ ] Proxy
+- [x] Decorator
+- [x] Proxy
 
 ## Structural patterns
 - [ ] Flyweight
-- [ ] Facade
+- [x] Facade
 
 ## Behavioral patterns
 - [ ] Iterator
 - [ ] Visitor
-- [ ] Command
+- [x] Command
 - [ ] Memento
-- [ ] Observer
+- [x] Observer (Kinda)
 - [ ] Mediator
 - [ ] Chain of Responsibility
 - [ ] Strategy

@@ -1,14 +1,15 @@
 class AddContactCommand implements Command {
     private ContactList contactList;
+    private Contact contact;
 
-    AddContactCommand(ContactList list) {
+    AddContactCommand(ContactList list, Contact contact) {
         this.contactList = list;
+        this.contact = contact;
     }
 
     @Override
     public void execute() {
-        Contact contact = new Contact("Contact " + this.contactList.size());
-        this.contactList.add(contact);
+        this.contactList.add(this.contact);
     }
 
     @Override

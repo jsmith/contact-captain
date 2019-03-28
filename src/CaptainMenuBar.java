@@ -1,22 +1,18 @@
 import javax.swing.*;
 
 class CaptainMenuBar extends JMenuBar {
-    CaptainMenuBar(Store store) {
+    CaptainMenuBar(SystemFacade facade) {
         // FILE
         JMenu menu = new JMenu("File");
         this.add(menu);
 
         JMenuItem save = new JMenuItem("Save");
         menu.add(save);
-        save.addActionListener(e -> store.save());
-
-        JMenuItem saveAs = new JMenuItem("Save As");
-        menu.add(saveAs);
-        saveAs.addActionListener(e -> store.saveAs());
+        save.addActionListener(e -> facade.save());
 
         JMenuItem open = new JMenuItem("Open");
         menu.add(open);
-        save.addActionListener(e -> store.open());
+        save.addActionListener(e -> facade.open());
 
         // EDIT
         menu = new JMenu("Edit");
@@ -24,10 +20,10 @@ class CaptainMenuBar extends JMenuBar {
 
         JMenuItem undo = new JMenuItem("Undo");
         menu.add(undo);
-        undo.addActionListener(e -> store.undo());
+        undo.addActionListener(e -> facade.undo());
 
         JMenuItem redo = new JMenuItem("Redo");
         menu.add(redo);
-        redo.addActionListener(e -> store.redo());
+        redo.addActionListener(e -> facade.redo());
     }
 }
