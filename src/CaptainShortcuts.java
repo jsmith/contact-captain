@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class CaptainShortcuts implements KeyListener {
-    Store store;
+    private Store store;
 
     CaptainShortcuts(Store store) {
         this.store = store;
@@ -15,6 +15,8 @@ public class CaptainShortcuts implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
+        System.out.println("Pressing " + keyEvent.getKeyChar());
+
         System.out.println(keyEvent.isControlDown());
 
         if (!keyEvent.isControlDown()) {
@@ -45,6 +47,7 @@ public class CaptainShortcuts implements KeyListener {
                 break;
             case 'o':
                 this.store.open();
+                break;
         }
     }
 

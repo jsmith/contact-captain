@@ -16,6 +16,10 @@ public class Contact implements Component {
         return new Contact(this.name);
     }
 
+    String getName() {
+        return this.name;
+    }
+
     @Override
     public JComponent getComponent() {
         return this.panel;

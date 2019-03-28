@@ -19,9 +19,11 @@ public class Client {
 
             captain.addContact(e -> store.addContact());
             frame.setJMenuBar(new CaptainMenuBar(store));
+            frame.addKeyListener(new CaptainShortcuts(store));
 
             frame.pack();
             frame.setLocationRelativeTo(null);
+            frame.setFocusable(true);
             frame.setVisible(true);
         });
     }

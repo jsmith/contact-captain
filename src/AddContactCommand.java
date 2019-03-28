@@ -7,7 +7,7 @@ class AddContactCommand implements Command {
 
     @Override
     public void execute() {
-        Contact contact = new Contact("Contact");
+        Contact contact = new Contact("Contact " + this.contactList.size());
         this.contactList.add(contact);
     }
 

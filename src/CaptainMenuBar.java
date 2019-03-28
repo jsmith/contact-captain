@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 
 class CaptainMenuBar extends JMenuBar {
     CaptainMenuBar(Store store) {
@@ -7,15 +6,15 @@ class CaptainMenuBar extends JMenuBar {
         JMenu menu = new JMenu("File");
         this.add(menu);
 
-        JMenuItem save = new JMenuItem("Save", KeyEvent.VK_T);
+        JMenuItem save = new JMenuItem("Save");
         menu.add(save);
         save.addActionListener(e -> store.save());
 
-        JMenuItem saveAs = new JMenuItem("Save As", KeyEvent.VK_T);
+        JMenuItem saveAs = new JMenuItem("Save As");
         menu.add(saveAs);
         saveAs.addActionListener(e -> store.saveAs());
 
-        JMenuItem open = new JMenuItem("Open", KeyEvent.VK_T);
+        JMenuItem open = new JMenuItem("Open");
         menu.add(open);
         save.addActionListener(e -> store.open());
 
@@ -23,12 +22,12 @@ class CaptainMenuBar extends JMenuBar {
         menu = new JMenu("Edit");
         this.add(menu);
 
-        JMenuItem undo = new JMenuItem("Undo", KeyEvent.VK_T);
+        JMenuItem undo = new JMenuItem("Undo");
         menu.add(undo);
         undo.addActionListener(e -> store.undo());
 
-        JMenuItem redo = new JMenuItem("Redo", KeyEvent.VK_T);
+        JMenuItem redo = new JMenuItem("Redo");
         menu.add(redo);
-        undo.addActionListener(e -> store.redo());
+        redo.addActionListener(e -> store.redo());
     }
 }

@@ -22,8 +22,10 @@ class ContactList implements Component {
         gbc1.gridwidth = GridBagConstraints.REMAINDER;
         gbc1.weightx = 1;
         gbc1.fill = GridBagConstraints.HORIZONTAL;
-        this.list.add(contact.getComponent(), gbc1, 0);
+        this.list.add(contact.getComponent(), gbc1, this.contacts.size());
         this.contacts.add(contact);
+        this.list.revalidate();
+        this.list.repaint();
     }
 
     void pop() {
@@ -32,6 +34,10 @@ class ContactList implements Component {
         this.contacts.remove(i);
         this.list.revalidate();
         this.list.repaint();
+    }
+
+    int size() {
+        return this.contacts.size();
     }
 
     @Override
