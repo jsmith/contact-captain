@@ -42,14 +42,14 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 - [x] Facade
 
 ## Behavioral patterns
-- [ ] Iterator
+- [ ] Iterator [TODO Sorting]
 - [ ] Visitor
 - [x] Command
-- [ ] Memento
+- [ ] Memento [TODO Serialization]
 - [x] Observer (Kinda)
 - [ ] Mediator
 - [ ] Chain of Responsibility
-- [ ] Strategy
+- [ ] Strategy [TODO]
 - [ ] State
-- [ ] Template Method
+- [ ] Template Method [TODO Sorting]
 - [ ] Interpreter
