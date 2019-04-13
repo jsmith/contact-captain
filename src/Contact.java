@@ -4,28 +4,32 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class Contact extends Component {
-    private String name;
+    private String firstName;
     private JPanel panel = new JPanel();
     private JPopupMenu menu = new JPopupMenu();
     private JMenuItem copy = new JMenuItem("Copy");
 
-    Contact(String name) {
-        this.name = name;
+    Contact(String firstName) {
+        this.firstName = firstName;
         this.panel.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
-        this.panel.add(new JLabel(name));
+        this.panel.add(new JLabel(firstName));
 
         this.menu.add(copy);
     }
 
-    public Contact copy() {
-        return new Contact(this.name);
+    Contact copy() {
+        return new Contact(this.firstName);
     }
 
     protected JPopupMenu getJPopupMenu() {
         return menu;
     }
 
-    public void onCopy(ActionListener al) {
+    String getFirstName() {
+        return this.firstName;
+    }
+
+    void onCopy(ActionListener al) {
         this.copy.addActionListener(al);
     }
 

@@ -10,7 +10,7 @@ Your application should be developed using Java.
 # Deliverables
 Project due: Thursday, Apr. 18, 2019 at 4:30 pm (AST). Please note that due to University requirements, no extensions can be given.
 
-For this project, you need to submit the following 3 artefacts in a single zip file with name “CS4015Project_studentname.zip”, “SWE4403Project_studentname.zip”, or “CS6075Project_studentname.zip” in the course D2L.
+For this project, you need to submit the following 3 artifacts in a single zip file with firstName “CS4015Project_studentname.zip”, “SWE4403Project_studentname.zip”, or “CS6075Project_studentname.zip” in the course D2L.
 
 Exported Design model with the main class diagram of your software application in Rational Software Architect Designer. In the class diagram, you only need to give class names and their relationships without class attributes/variables and operations/methods. 
 A PDF document in which you need to describe how each of the architectural and design patterns is implemented in your application.
@@ -42,7 +42,7 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 - [x] Facade
 
 ## Behavioral patterns
-- [ ] Iterator [TODO Sorting]
+- [x] Iterator [TODO Sorting]
 - [ ] Visitor
 - [x] Command
 - [ ] Memento [TODO Serialization]
@@ -51,5 +51,5 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 - [ ] Chain of Responsibility
 - [ ] Strategy [TODO]
 - [ ] State
-- [ ] Template Method [TODO Sorting]
+- [x] Template Method [TODO Sorting]
 - [ ] Interpreter
