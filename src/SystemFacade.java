@@ -23,10 +23,10 @@ class SystemFacade extends Invoker {
     }
 
     void save() {
-        this.contactFile.save();
+        this.contactFile.save(this.contactList.getMomento());
     }
 
     void open() {
-        this.contactFile.load();
+        this.contactList.setMomento(this.contactFile.load());
     }
 }

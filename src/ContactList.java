@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 class ContactList extends Component {
     private JPanel list = new JPanel(new GridBagLayout());
@@ -43,6 +44,32 @@ class ContactList extends Component {
         this.contacts.add(contact);
         this.list.revalidate();
         this.list.repaint();
+    }
+
+    Momento<List<SimpleContact>> getMomento() {
+        List<SimpleContact> simpleContacts = this.contacts
+                .stream()
+                .map(contact -> new SimpleContact()
+                        .setEmail("")
+                        .setFirstName(contact.getFirstName())
+                        .setLastName("")
+                        .setPhoneNumber("")
+                ).collect(Collectors.toList());
+
+        return new Momento<>(simpleContacts);
+    }
+
+    void setMomento(Momento<List<SimpleContact>> memento) {
+        for (int i = this.contacts.size() - 1; i >= 0; i--) {
+            this.remove(i);
+        }
+
+        List<Contact> contacts = memento.getState()
+                .stream()
+                .map(simple -> new Contact(simple.getFirstName()))
+                .collect(Collectors.toList());
+
+        contacts.forEach(this::add);
     }
 
     @Override

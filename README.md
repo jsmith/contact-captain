@@ -53,3 +53,6 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 - [ ] State
 - [x] Template Method [TODO Sorting]
 - [ ] Interpreter
+
+## BONUS
+- [X] Fluent pattern

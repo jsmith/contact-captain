@@ -10,31 +10,35 @@ public class SimpleContact implements Serializable {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    SimpleContact setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    SimpleContact setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    SimpleContact setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    SimpleContact setEmail(String email) {
         this.email = email;
+        return this;
     }
 }

@@ -1,4 +1,6 @@
+import java.util.List;
+
 public interface ContactFile {
-    void load();
-    void save();
+    Momento<List<SimpleContact>> load();
+    void save(Momento<List<SimpleContact>> memento);
 }
