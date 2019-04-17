@@ -46,30 +46,44 @@ class ContactList extends Component {
         this.list.repaint();
     }
 
-    Momento<List<SimpleContact>> getMomento() {
+    Momento<List<SimpleContact>> getMemento() {
         List<SimpleContact> simpleContacts = this.contacts
                 .stream()
                 .map(contact -> new SimpleContact()
-                        .setEmail("")
+                        .setEmail(contact.getEmail())
                         .setFirstName(contact.getFirstName())
-                        .setLastName("")
-                        .setPhoneNumber("")
+                        .setLastName(contact.getLastName())
+                        .setPhoneNumber(contact.getPhoneNumber())
                 ).collect(Collectors.toList());
 
         return new Momento<>(simpleContacts);
     }
 
-    void setMomento(Momento<List<SimpleContact>> memento) {
-        for (int i = this.contacts.size() - 1; i >= 0; i--) {
-            this.remove(i);
-        }
-
+    void setMemento(Momento<List<SimpleContact>> memento) {
+        this.removeAll();
         List<Contact> contacts = memento.getState()
                 .stream()
-                .map(simple -> new Contact(simple.getFirstName()))
+                .map(simple -> new Contact(
+                        simple.getFirstName(),
+                        simple.getLastName(),
+                        simple.getEmail(),
+                        simple.getPhoneNumber()
+                ))
                 .collect(Collectors.toList());
 
         contacts.forEach(this::add);
+    }
+
+    void sort(ContactSorter sorter) {
+        List<Contact> sorted = sorter.sort(this.contacts);
+        this.removeAll();
+        sorted.forEach(this::add);
+    }
+
+    private void removeAll() {
+        for (int i = this.contacts.size() - 1; i >= 0; i--) {
+            this.remove(i);
+        }
     }
 
     @Override

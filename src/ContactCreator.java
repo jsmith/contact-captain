@@ -2,19 +2,23 @@ import javax.swing.*;
 import java.awt.*;
 
 class ContactCreator {
-    private JTextField field1 = new JTextField("");
-    private JTextField field2 = new JTextField("");
+    private JTextField first = new JTextField("");
+    private JTextField last = new JTextField("");
+    private JTextField email = new JTextField("");
+    private JTextField phoneNumber = new JTextField("");
 
-    private void getContact() {
-        String[] items = {"One", "Two", "Three", "Four", "Five"};
-        JComboBox<String> combo = new JComboBox<>(items);
-
+    Contact getContact() {
         JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(combo);
+
         panel.add(new JLabel("First Name"));
-        panel.add(field1);
+        panel.add(first);
         panel.add(new JLabel("Last Name"));
-        panel.add(field2);
+        panel.add(last);
+        panel.add(new JLabel("Email"));
+        panel.add(email);
+        panel.add(new JLabel("Phone Number"));
+        panel.add(phoneNumber);
+
         int result = JOptionPane.showConfirmDialog(
                 null,
                 panel,
@@ -23,12 +27,15 @@ class ContactCreator {
                 JOptionPane.PLAIN_MESSAGE
         );
 
-        if (result == JOptionPane.OK_OPTION) {
-            System.out.println(combo.getSelectedItem()
-                    + " " + field1.getText()
-                    + " " + field2.getText());
-        } else {
-            System.out.println("Cancelled");
+        if (result != JOptionPane.OK_OPTION) {
+            return null;
         }
+
+        return new Contact(
+                first.getText(),
+                last.getText(),
+                email.getText(),
+                phoneNumber.getText()
+        );
     }
 }

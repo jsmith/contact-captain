@@ -25,5 +25,16 @@ class CaptainMenuBar extends JMenuBar {
         JMenuItem redo = new JMenuItem("Redo");
         menu.add(redo);
         redo.addActionListener(e -> facade.redo());
+
+        menu = new JMenu("Sort");
+        this.add(menu);
+
+        JMenuItem firstName = new JMenuItem("First Name");
+        menu.add(firstName);
+        firstName.addActionListener(e -> facade.sortFirstName());
+
+        JMenuItem lastName = new JMenuItem("Last Name");
+        menu.add(lastName);
+        lastName.addActionListener(e -> facade.sortLastName());
     }
 }

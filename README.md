@@ -56,3 +56,6 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 
 ## BONUS
 - [X] Fluent pattern
+
+## Resources
+https://stackoverflow.com/questions/14076772/difference-between-memento-pattern-and-serialization

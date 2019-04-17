@@ -2,14 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 abstract class ContactSorter {
-    private List<Contact> contacts;
-
-    ContactSorter(List<Contact> contacts) {
-        this.contacts = contacts;
-    }
-
-    List<Contact> sort() {
-        List<Contact> slice =  new ArrayList<>( this.contacts);
+    List<Contact> sort(List<Contact> contacts) {
+        List<Contact> slice =  new ArrayList<>( contacts);
         ContactIterator iterator = new ContactIterator(slice);
 
         // Perform insertion sort
@@ -18,7 +12,7 @@ abstract class ContactSorter {
             int min = i;
 
             int j = i + 1;
-            for (iterator.initialize(j); iterator.isDone(); iterator.next(), j++) {
+            for (iterator.initialize(j); !iterator.isDone(); iterator.next(), j++) {
                 Contact current = iterator.getCurrent();
                 if (this.compare(current, slice.get(min)) < 0) {
                     min = j;

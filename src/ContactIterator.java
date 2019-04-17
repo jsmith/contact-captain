@@ -21,7 +21,7 @@ class ContactIterator {
     }
 
     boolean isDone() {
-        return this.contacts.size() >= this.currentIndex;
+        return this.contacts.size() <= this.currentIndex;
     }
 
     Contact getCurrent() {

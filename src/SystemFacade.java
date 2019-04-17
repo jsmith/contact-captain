@@ -7,7 +7,14 @@ class SystemFacade extends Invoker {
     }
 
     void newContact() {
-        Contact contact = new Contact("Contact " + this.contactList.size());
+        ContactCreator creator = new ContactCreator();
+        Contact contact = creator.getContact();
+
+        // contact is null if user cancels
+        if (contact == null) {
+            return;
+        }
+
         this.addContact(contact);
     }
 
@@ -23,10 +30,18 @@ class SystemFacade extends Invoker {
     }
 
     void save() {
-        this.contactFile.save(this.contactList.getMomento());
+        this.contactFile.save(this.contactList.getMemento());
     }
 
     void open() {
-        this.contactList.setMomento(this.contactFile.load());
+        this.contactList.setMemento(this.contactFile.load());
+    }
+
+    void sortFirstName() {
+        this.invoke(new SortCommand(new FirstNameSorter(), this.contactList));
+    }
+
+    void sortLastName() {
+        this.invoke(new SortCommand(new LastNameSorter(), this.contactList));
     }
 }
