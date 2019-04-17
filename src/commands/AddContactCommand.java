@@ -1,8 +1,13 @@
-class AddContactCommand implements Command {
+package commands;
+
+import ui.Contact;
+import ui.ContactList;
+
+public class AddContactCommand implements Command {
     private ContactList contactList;
     private Contact contact;
 
-    AddContactCommand(ContactList list, Contact contact) {
+    public AddContactCommand(ContactList list, Contact contact) {
         this.contactList = list;
         this.contact = contact;
     }

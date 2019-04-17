@@ -1,3 +1,5 @@
+package models;
+
 import java.io.Serializable;
 
 public class SimpleContact implements Serializable {
@@ -10,7 +12,7 @@ public class SimpleContact implements Serializable {
         return firstName;
     }
 
-    SimpleContact setFirstName(String firstName) {
+    public SimpleContact setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -19,7 +21,7 @@ public class SimpleContact implements Serializable {
         return lastName;
     }
 
-    SimpleContact setLastName(String lastName) {
+    public SimpleContact setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -28,7 +30,7 @@ public class SimpleContact implements Serializable {
         return phoneNumber;
     }
 
-    SimpleContact setPhoneNumber(String phoneNumber) {
+    public SimpleContact setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -37,7 +39,7 @@ public class SimpleContact implements Serializable {
         return email;
     }
 
-    SimpleContact setEmail(String email) {
+    public SimpleContact setEmail(String email) {
         this.email = email;
         return this;
     }

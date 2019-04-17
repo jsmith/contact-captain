@@ -21,7 +21,7 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 
 # Links
 - [Swing Overview](http://web.mit.edu/6.005/www/sp14/psets/ps4/java-6-tutorial/components.html)
-- [Command Pattern](https://www.cs.mcgill.ca/~hv/classes/CS400/01.hchen/doc/command/command.html)
+- [commands.Command Pattern](https://www.cs.mcgill.ca/~hv/classes/CS400/01.hchen/doc/command/command.html)
 
 # Design Patterns
 ## Creational
@@ -44,8 +44,8 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 ## Behavioral patterns
 - [x] Iterator [TODO Sorting]
 - [ ] Visitor
-- [x] Command
-- [ ] Memento [TODO Serialization]
+- [x] commands.Command
+- [x] models.Memento [TODO Serialization]
 - [x] Observer (Kinda)
 - [ ] Mediator
 - [ ] Chain of Responsibility

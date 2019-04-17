@@ -1,10 +1,15 @@
+package files;
+
+import models.Memento;
+import models.SimpleContact;
+
 import java.util.List;
 
 public class ContactFileProxy implements ContactFile {
     private ContactFileConcrete contactFile;
 
     @Override
-    public Momento<List<SimpleContact>> load() {
+    public Memento<List<SimpleContact>> load() {
         if (contactFile == null) {
             contactFile = new ContactFileConcrete();
         }
@@ -13,7 +18,7 @@ public class ContactFileProxy implements ContactFile {
     }
 
     @Override
-    public void save(Momento<List<SimpleContact>> memento) {
+    public void save(Memento<List<SimpleContact>> memento) {
         if (contactFile == null) {
             contactFile = new ContactFileConcrete();
         }

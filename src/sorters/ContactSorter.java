@@ -1,8 +1,13 @@
+package sorters;
+
+import ui.Contact;
+import utils.ContactIterator;
+
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class ContactSorter {
-    List<Contact> sort(List<Contact> contacts) {
+public abstract class ContactSorter {
+    public List<Contact> sort(List<Contact> contacts) {
         List<Contact> slice =  new ArrayList<>( contacts);
         ContactIterator iterator = new ContactIterator(slice);
 

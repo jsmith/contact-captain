@@ -12,7 +12,7 @@ class CaptainMenuBar extends JMenuBar {
 
         JMenuItem open = new JMenuItem("Open");
         menu.add(open);
-        save.addActionListener(e -> facade.open());
+        open.addActionListener(e -> facade.open());
 
         // EDIT
         menu = new JMenu("Edit");

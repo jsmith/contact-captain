@@ -1,24 +1,29 @@
+package commands;
+
+import sorters.ContactSorter;
+import ui.Contact;
+import ui.ContactList;
+
 import java.util.List;
 
 public class SortCommand implements Command {
     private ContactSorter sorter;
-    private Momento<List<SimpleContact>> memento;
+    private List<Contact> oldContacts;
     private ContactList contactList;
 
-    SortCommand(ContactSorter sorter, ContactList contactList) {
+    public SortCommand(ContactSorter sorter, ContactList contactList) {
         this.sorter = sorter;
         this.contactList = contactList;
     }
 
     @Override
     public void execute() {
-        this.memento = this.contactList.getMemento();
+        this.oldContacts = this.contactList.getContacts();
         this.contactList.sort(this.sorter);
     }
 
     @Override
     public void unexecute() {
-        this.contactList.setMemento(this.memento);
-        this.memento = null;
+        this.contactList.setContacts(this.oldContacts);
     }
 }

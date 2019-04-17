@@ -1,3 +1,5 @@
+import ui.ContactCaptain;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +10,7 @@ public class Client {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception ignored) {}
 
-            JFrame frame = new JFrame("Contact Captain");
+            JFrame frame = new JFrame("ui.Contact Captain");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             ContactCaptain captain = new ContactCaptain();
 
@@ -17,7 +19,7 @@ public class Client {
 
             SystemFacade facade = new SystemFacade(captain);
 
-            captain.addContact(e -> facade.newContact());
+            captain.onDidAddContact(e -> facade.newContact());
             frame.setJMenuBar(new CaptainMenuBar(facade));
 
             frame.pack();

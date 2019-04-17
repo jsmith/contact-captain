@@ -1,10 +1,12 @@
+package commands;
+
 import java.util.Stack;
 
-class Invoker {
+class ConcreteInvoker extends InvokerInterface {
     private Stack<Command> history = new Stack<>();
     private Stack<Command> future = new Stack<>();
 
-    void invoke(Command command) {
+    public void invoke(Command command) {
         if (this.future.size() != 0) {
             this.future = new Stack<>();
         }
@@ -13,7 +15,7 @@ class Invoker {
         this.history.push(command);
     }
 
-    void undo() {
+    public void undo() {
         if (this.history.size() == 0) {
             return;
         }
@@ -23,7 +25,7 @@ class Invoker {
         this.future.push(command);
     }
 
-    void redo() {
+    public void redo() {
         if (this.future.size() == 0) {
             return;
         }

@@ -1,13 +1,26 @@
+package ui;
+
 import javax.swing.*;
 import java.awt.*;
 
-class ContactCreator {
+public class ContactCreator {
     private JTextField first = new JTextField("");
     private JTextField last = new JTextField("");
     private JTextField email = new JTextField("");
     private JTextField phoneNumber = new JTextField("");
 
-    Contact getContact() {
+    public static ContactCreator newContact() {
+        return new ContactCreator("", "", "", "");
+    }
+
+    public ContactCreator(String firstName, String lastName, String email, String phoneNumber) {
+        this.first.setText(firstName);
+        this.last.setText(lastName);
+        this.email.setText(email);
+        this.phoneNumber.setText(phoneNumber);
+    }
+
+    public Contact getContact() {
         JPanel panel = new JPanel(new GridLayout(0, 1));
 
         panel.add(new JLabel("First Name"));
@@ -22,7 +35,7 @@ class ContactCreator {
         int result = JOptionPane.showConfirmDialog(
                 null,
                 panel,
-                "Create Contact",
+                "Create ui.Contact",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE
         );

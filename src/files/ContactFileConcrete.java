@@ -1,3 +1,8 @@
+package files;
+
+import models.Memento;
+import models.SimpleContact;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +11,14 @@ public class ContactFileConcrete implements ContactFile {
     private final static String FILE_NAME = "contacts.b";
 
     @Override
-    public Momento<List<SimpleContact>> load() {
+    public Memento<List<SimpleContact>> load() {
         List<SimpleContact> contacts;
 
         try {
             FileInputStream fis = new FileInputStream(FILE_NAME);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
+            //noinspection unchecked
             contacts = (ArrayList) ois.readObject();
 
             ois.close();
@@ -22,11 +28,11 @@ public class ContactFileConcrete implements ContactFile {
             return null;
         }
 
-        return new Momento<>(contacts);
+        return new Memento<>(contacts);
     }
 
     @Override
-    public void save(Momento<List<SimpleContact>> memento) {
+    public void save(Memento<List<SimpleContact>> memento) {
         try {
             FileOutputStream fos = new FileOutputStream(FILE_NAME);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
