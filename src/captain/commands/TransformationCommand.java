@@ -16,7 +16,7 @@ public class TransformationCommand implements Command {
     public TransformationCommand(ContactList contactList, Visitor visitor) {
         this.visitor = visitor;
         this.contactRows = contactList.getContactRows();
-        this.oldContacts = this.contactRows.stream().map(ContactRow::makeContact).collect(Collectors.toList());
+        this.oldContacts = this.contactRows.stream().map(ContactRow::getContact).collect(Collectors.toList());
     }
 
     @Override

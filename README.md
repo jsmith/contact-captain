@@ -22,6 +22,7 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 # Links
 - [Swing Overview](http://web.mit.edu/6.005/www/sp14/psets/ps4/java-6-tutorial/components.html)
 - [captain.commands.Command Pattern](https://www.cs.mcgill.ca/~hv/classes/CS400/01.hchen/doc/command/command.html)
+- [Memento](https://stackoverflow.com/questions/14076772/difference-between-memento-pattern-and-serialization)
 
 # Design Patterns
 ## Creational
@@ -32,7 +33,7 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 - [x] Singleton
 
 ## Structural
-- [ ] Adaptor
+- [x] Adaptor
 - [ ] Bridge
 - [x] Decorator
 - [x] Proxy
@@ -43,9 +44,9 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 
 ## Behavioral patterns
 - [x] Iterator [TODO Sorting]
-- [ ] Visitor
+- [x] Visitor
 - [x] captain.commands.Command
-- [x] captain.models.Memento [TODO Serialization]
+- [x] Memento [TODO Serialization]
 - [x] Observer (Kinda)
 - [ ] Mediator
 - [ ] Chain of Responsibility
@@ -55,7 +56,7 @@ Write an application to schedule courses for the Bachelor of Computer Science un
 - [ ] Interpreter
 
 ## BONUS
-- [X] Fluent pattern
+- [x] Fluent pattern
 
 ## Resources
-https://stackoverflow.com/questions/14076772/difference-between-memento-pattern-and-serialization
+

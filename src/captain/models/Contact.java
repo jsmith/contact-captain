@@ -43,4 +43,12 @@ public class Contact implements Serializable {
         this.email = email;
         return this;
     }
+
+    public Contact copy() {
+        return new Contact()
+                .setFirstName(this.firstName)
+                .setLastName(this.lastName)
+                .setEmail(this.email)
+                .setPhoneNumber(this.phoneNumber);
+    }
 }

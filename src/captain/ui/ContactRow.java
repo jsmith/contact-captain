@@ -38,7 +38,7 @@ public class ContactRow extends Component {
         ContactRow.deleteCb = cb;
     }
 
-    ContactRow(String firstName, String lastName, String email, String phoneNumber) {
+    private ContactRow(String firstName, String lastName, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -62,15 +62,6 @@ public class ContactRow extends Component {
 
     private static String padRight(String string, int length) {
         return String.format("%-" + length + "s", string);
-    }
-
-    public ContactRow copy() {
-        return new ContactRow(
-                this.firstName,
-                this.lastName,
-                this.email,
-                this.phoneNumber
-        );
     }
 
     protected JPopupMenu getJPopupMenu() {
@@ -113,7 +104,7 @@ public class ContactRow extends Component {
         this.createLabel();
     }
 
-    public Contact makeContact() {
+    public Contact getContact() {
         return new Contact()
                 .setEmail(this.getEmail())
                 .setFirstName(this.getFirstName())

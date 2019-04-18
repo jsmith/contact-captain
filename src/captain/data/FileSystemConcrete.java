@@ -1,4 +1,4 @@
-package captain.files;
+package captain.data;
 
 import captain.models.Memento;
 import captain.models.Contact;
@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactFileConcrete implements ContactFile {
+public class FileSystemConcrete implements FileSystem {
     private final static String FILE_NAME = "contacts.b";
 
     @Override

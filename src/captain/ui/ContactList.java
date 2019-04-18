@@ -55,7 +55,7 @@ public class ContactList extends captain.ui.Component {
     public Memento<List<Contact>> getMemento() {
         List<Contact> contacts = this.contactRows
                 .stream()
-                .map(ContactRow::makeContact).collect(Collectors.toList());
+                .map(ContactRow::getContact).collect(Collectors.toList());
 
         return new Memento<>(contacts);
     }

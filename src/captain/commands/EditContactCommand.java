@@ -9,7 +9,7 @@ public class EditContactCommand implements Command {
     private ContactRow contactRow;
 
     public EditContactCommand(ContactRow currentContactRow, Contact newContact) {
-        this.oldContact = currentContactRow.makeContact();
+        this.oldContact = currentContactRow.getContact();
         this.newContact = newContact;
         this.contactRow = currentContactRow;
     }

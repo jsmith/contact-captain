@@ -1,12 +1,14 @@
 package captain;
 
 import captain.commands.*;
-import captain.files.ContactFile;
-import captain.files.ContactFileProxy;
+import captain.data.FileSystem;
+import captain.data.FileSystemProxy;
 import captain.models.Memento;
 import captain.models.Contact;
+import captain.sorters.EmailSorter;
 import captain.sorters.FirstNameSorter;
 import captain.sorters.LastNameSorter;
+import captain.sorters.PhoneNumberSorter;
 import captain.transformations.LowercaseVisitor;
 import captain.transformations.UppercaseVisitor;
 import captain.ui.ContactRow;
@@ -16,12 +18,12 @@ import captain.ui.ContactList;
 
 import java.util.List;
 
-public class SystemFacade {
+public class CaptainFacade {
     private ContactList contactList;
     private InvokerInterface invoker = new InvokerAdapter();
-    private ContactFile contactFile = new ContactFileProxy();
+    private FileSystem localFile = new FileSystemProxy();
 
-    public SystemFacade(ContactCaptain captain) {
+    public CaptainFacade(ContactCaptain captain) {
         this.contactList = captain.getContactList();
         ContactRow.onDidCopy(this::copyContact);
         ContactRow.onDidEdit(this::editContact);
@@ -30,14 +32,14 @@ public class SystemFacade {
 
     public void newContact() {
         ContactCreator creator = ContactCreator.newContact();
-        ContactRow contactRow = creator.getContact();
+        Contact contact = creator.getContact();
 
-        // contactRow is null if user cancels
-        if (contactRow == null) {
+        // contact is null if user cancels
+        if (contact == null) {
             return;
         }
 
-        this.addContact(contactRow);
+        this.addContact(ContactRow.fromContact(contact));
     }
 
     private void addContact(ContactRow contactRow) {
@@ -49,37 +51,32 @@ public class SystemFacade {
     }
 
     private void copyContact(ContactRow contactRow) {
-        this.insertContact(contactRow.copy(), this.contactList.indexOf(contactRow) + 1);
+        this.insertContact(contactRow.getContact().copy(), this.contactList.indexOf(contactRow) + 1);
     }
 
-    private void insertContact(ContactRow contactRow, int i) {
-        this.invoker.invoke(new InsertContactCommand(this.contactList, contactRow, i));
+    private void insertContact(Contact contact, int i) {
+        this.invoker.invoke(new InsertContactCommand(this.contactList, ContactRow.fromContact(contact), i));
     }
 
     private void editContact(ContactRow contactRow) {
-        ContactCreator creator = new ContactCreator(
-                contactRow.getFirstName(),
-                contactRow.getLastName(),
-                contactRow.getEmail(),
-                contactRow.getPhoneNumber()
-        );
+        ContactCreator creator = ContactCreator.fromContact(contactRow.getContact());
 
-        ContactRow newContactRow = creator.getContact();
+        Contact contact = creator.getContact();
 
-        // contactRow is null if user cancels
-        if (newContactRow == null) {
+        // contact is null if user cancels
+        if (contact == null) {
             return;
         }
 
-        this.invoker.invoke(new EditContactCommand(contactRow, newContactRow.makeContact()));
+        this.invoker.invoke(new EditContactCommand(contactRow, contact));
     }
 
     public void save() {
-        this.contactFile.save(this.contactList.getMemento());
+        this.localFile.save(this.contactList.getMemento());
     }
 
     public void open() {
-        Memento<List<Contact>> memento = this.contactFile.load();
+        Memento<List<Contact>> memento = this.localFile.load();
         if (memento == null) {
             return;
         }
@@ -95,12 +92,20 @@ public class SystemFacade {
         this.invoker.invoke(new SortCommand(new LastNameSorter(), this.contactList));
     }
 
+    public void sortPhoneNumber() {
+        this.invoker.invoke(new SortCommand(new PhoneNumberSorter(), this.contactList));
+    }
+
+    public void sortEmail() {
+        this.invoker.invoke(new SortCommand(new EmailSorter(), this.contactList));
+    }
+
     public void transformUppercase() {
-        this.invoker.invoke(new TransformationCommand(this.contactList, new UppercaseVisitor()));
+        this.invoker.invoke(new TransformationCommand(this.contactList, UppercaseVisitor.Instance()));
     }
 
     public void transformLowercase() {
-        this.invoker.invoke(new TransformationCommand(this.contactList, new LowercaseVisitor()));
+        this.invoker.invoke(new TransformationCommand(this.contactList, LowercaseVisitor.Instance()));
     }
 
     public void undo() {

@@ -1,7 +1,6 @@
 package captain.sorters;
 
 import captain.ui.ContactRow;
-import captain.utils.ContactIterator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +8,14 @@ import java.util.List;
 public abstract class ContactSorter {
     public List<ContactRow> sort(List<ContactRow> contactRows) {
         List<ContactRow> slice =  new ArrayList<>(contactRows);
-        ContactIterator iterator = new ContactIterator(slice);
 
         // Perform insertion sort
         // Make sure to use the iterator class
         for (int i = 0; i < slice.size() - 1; i++) {
             int min = i;
 
-            int j = i + 1;
-            for (iterator.initialize(j); !iterator.isDone(); iterator.next(), j++) {
-                ContactRow current = iterator.getCurrent();
+            for (int j = i + 1; j < slice.size(); j++) {
+                ContactRow current = slice.get(i);
                 if (this.compare(current, slice.get(min)) < 0) {
                     min = j;
                 }

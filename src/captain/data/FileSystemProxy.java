@@ -1,17 +1,17 @@
-package captain.files;
+package captain.data;
 
 import captain.models.Memento;
 import captain.models.Contact;
 
 import java.util.List;
 
-public class ContactFileProxy implements ContactFile {
-    private ContactFileConcrete contactFile;
+public class FileSystemProxy implements FileSystem {
+    private FileSystemConcrete contactFile;
 
     @Override
     public Memento<List<Contact>> load() {
         if (contactFile == null) {
-            contactFile = new ContactFileConcrete();
+            contactFile = new FileSystemConcrete();
         }
 
         return contactFile.load();
@@ -20,7 +20,7 @@ public class ContactFileProxy implements ContactFile {
     @Override
     public void save(Memento<List<Contact>> memento) {
         if (contactFile == null) {
-            contactFile = new ContactFileConcrete();
+            contactFile = new FileSystemConcrete();
         }
 
         contactFile.save(memento);

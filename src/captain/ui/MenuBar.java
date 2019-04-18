@@ -1,12 +1,11 @@
 package captain.ui;
 
-import captain.SystemFacade;
-import captain.transformations.UppercaseVisitor;
+import captain.CaptainFacade;
 
 import javax.swing.*;
 
 public class MenuBar extends JMenuBar {
-    public MenuBar(SystemFacade facade) {
+    public MenuBar(CaptainFacade facade) {
         // FILE
         JMenu menu = new JMenu("File");
         this.add(menu);
@@ -41,6 +40,14 @@ public class MenuBar extends JMenuBar {
         JMenuItem lastName = new JMenuItem("Last Name");
         menu.add(lastName);
         lastName.addActionListener(e -> facade.sortLastName());
+
+        JMenuItem emailSorter = new JMenuItem("Email");
+        menu.add(emailSorter);
+        emailSorter.addActionListener(e -> facade.sortEmail());
+
+        JMenuItem phoneNumberSorter = new JMenuItem("Phone Number");
+        menu.add(phoneNumberSorter);
+        phoneNumberSorter.addActionListener(e -> facade.sortPhoneNumber());
 
         menu = new JMenu("Transformations");
         this.add(menu);

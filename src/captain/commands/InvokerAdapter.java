@@ -1,11 +1,11 @@
 package captain.commands;
 
 public class InvokerAdapter extends InvokerInterface {
-    private InvokerInterface invoker = new ConcreteInvoker();
+    private ConcreteInvoker invoker = new ConcreteInvoker();
 
     @Override
     public void invoke(Command command) {
-        this.invoker.invoke(command);
+        this.invoker.invokeCommand(command);
     }
 
     @Override

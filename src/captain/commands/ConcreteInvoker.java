@@ -2,11 +2,11 @@ package captain.commands;
 
 import java.util.Stack;
 
-class ConcreteInvoker extends InvokerInterface {
+class ConcreteInvoker {
     private Stack<Command> history = new Stack<>();
     private Stack<Command> future = new Stack<>();
 
-    public void invoke(Command command) {
+    void invokeCommand(Command command) {
         if (this.future.size() != 0) {
             this.future = new Stack<>();
         }
@@ -15,7 +15,7 @@ class ConcreteInvoker extends InvokerInterface {
         this.history.push(command);
     }
 
-    public void undo() {
+    void undo() {
         if (this.history.size() == 0) {
             return;
         }
@@ -25,7 +25,7 @@ class ConcreteInvoker extends InvokerInterface {
         this.future.push(command);
     }
 
-    public void redo() {
+    void redo() {
         if (this.future.size() == 0) {
             return;
         }
