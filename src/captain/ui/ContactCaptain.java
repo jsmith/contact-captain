@@ -2,8 +2,6 @@ package captain.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.util.function.Consumer;
 
 public class ContactCaptain extends captain.ui.Component<JPanel> {
     private JPanel panel = new JPanel();
@@ -21,8 +19,8 @@ public class ContactCaptain extends captain.ui.Component<JPanel> {
         return this.list;
     }
 
-    public void onDidAddContact(Consumer<ActionEvent> listener) {
-        this.add.attach(listener);
+    public void onDidAddContact(Observer observer) {
+        this.add.attach(observer);
     }
 
     @Override

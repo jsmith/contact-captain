@@ -4,6 +4,7 @@ import captain.sorters.ContactSorter;
 import captain.ui.ContactRow;
 import captain.ui.ContactList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SortCommand implements Command {
@@ -18,7 +19,7 @@ public class SortCommand implements Command {
 
     @Override
     public void execute() {
-        this.oldContactRows = this.contactList.getContactRows();
+        this.oldContactRows = new ArrayList<>(this.contactList.getContactRows());
         this.contactList.sort(this.sorter);
     }
 

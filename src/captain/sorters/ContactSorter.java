@@ -15,7 +15,7 @@ public abstract class ContactSorter {
             int min = i;
 
             for (int j = i + 1; j < slice.size(); j++) {
-                ContactRow current = slice.get(i);
+                ContactRow current = slice.get(j);
                 if (this.compare(current, slice.get(min)) < 0) {
                     min = j;
                 }
