@@ -3,7 +3,7 @@ package captain.commands;
 import java.util.Stack;
 
 class ConcreteInvoker {
-    private Stack<Command> history = new Stack<>();
+    private Stack<Command> past = new Stack<>();
     private Stack<Command> future = new Stack<>();
 
     void invokeCommand(Command command) {
@@ -12,15 +12,15 @@ class ConcreteInvoker {
         }
 
         command.execute();
-        this.history.push(command);
+        this.past.push(command);
     }
 
     void undo() {
-        if (this.history.size() == 0) {
+        if (this.past.size() == 0) {
             return;
         }
 
-        Command command = this.history.pop();
+        Command command = this.past.pop();
         command.unexecute();
         this.future.push(command);
     }
@@ -32,6 +32,6 @@ class ConcreteInvoker {
 
         Command command = this.future.pop();
         command.execute();
-        this.history.push(command);
+        this.past.push(command);
     }
 }

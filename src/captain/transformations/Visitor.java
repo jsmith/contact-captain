@@ -9,7 +9,7 @@ public abstract class Visitor {
     public void traverse(List<ContactRow> contactRowList) {
         ContactIterator iterator = new ContactIterator(contactRowList);
         for(iterator.initialize(); !iterator.isDone(); iterator.next()) {
-            this.visit(iterator.getCurrent());
+            iterator.getCurrent().accept(this);
         }
     }
 

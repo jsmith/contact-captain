@@ -2,7 +2,7 @@ package captain.models;
 
 import java.io.Serializable;
 
-public class Contact implements Serializable {
+public class Contact implements Serializable, Prototype<Contact> {
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -44,7 +44,8 @@ public class Contact implements Serializable {
         return this;
     }
 
-    public Contact copy() {
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
+    public Contact clone() {
         return new Contact()
                 .setFirstName(this.firstName)
                 .setLastName(this.lastName)

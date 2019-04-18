@@ -4,7 +4,7 @@ import captain.ui.ContactRow;
 
 import java.util.List;
 
-public class ContactIterator {
+public class ContactIterator implements Iterator<ContactRow> {
     private int currentIndex = -1;
     private List<ContactRow> contactRows;
 
@@ -14,10 +14,6 @@ public class ContactIterator {
 
     public void initialize() {
         this.currentIndex = 0;
-    }
-
-    public void initialize(int index) {
-        this.currentIndex = index;
     }
 
     public void next() {

@@ -5,7 +5,6 @@ You can develop any application in which you are interested, as long as your imp
 
 ## Constraints
 Your application should be developed using Java.
-
  
 ## Deliverables
 Project due: Thursday, Apr. 18, 2019 at 4:30 pm (AST). Please note that due to University requirements, no extensions can be given.
@@ -26,11 +25,6 @@ javac *.java
 java Client
 ```
 
-# Links
-- [Swing Overview](http://web.mit.edu/6.005/www/sp14/psets/ps4/java-6-tutorial/components.html)
-- [captain.commands.Command Pattern](https://www.cs.mcgill.ca/~hv/classes/CS400/01.hchen/doc/command/command.html)
-- [Memento](https://stackoverflow.com/questions/14076772/difference-between-memento-pattern-and-serialization)
-
 # Design Patterns
 ## Creational
 - [x] Factory Method
@@ -50,20 +44,22 @@ java Client
 - [x] Facade
 
 ## Behavioral patterns
-- [x] Iterator [TODO Sorting]
+- [x] Iterator
 - [x] Visitor
-- [x] captain.commands.Command
-- [x] Memento [TODO Serialization]
-- [x] Observer (Kinda)
+- [x] cCommand
+- [x] Memento
+- [x] Observer
 - [ ] Mediator
 - [ ] Chain of Responsibility
-- [ ] Strategy [TODO]
+- [ ] Strategy
 - [ ] State
-- [x] Template Method [TODO Sorting]
+- [x] Template Method
 - [ ] Interpreter
 
 ## BONUS
 - [x] Fluent pattern
 
-## Resources
-
+# Links
+- [Swing Overview](http://web.mit.edu/6.005/www/sp14/psets/ps4/java-6-tutorial/components.html)
+- [captain.commands.Command Pattern](https://www.cs.mcgill.ca/~hv/classes/CS400/01.hchen/doc/command/command.html)
+- [Memento](https://stackoverflow.com/questions/14076772/difference-between-memento-pattern-and-serialization)

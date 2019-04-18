@@ -15,11 +15,11 @@ public class SortCommand implements Command {
     public SortCommand(ContactSorter sorter, ContactList contactList) {
         this.sorter = sorter;
         this.contactList = contactList;
+        this.oldContactRows = new ArrayList<>(contactList.getContactRows());
     }
 
     @Override
     public void execute() {
-        this.oldContactRows = new ArrayList<>(this.contactList.getContactRows());
         this.contactList.sort(this.sorter);
     }
 

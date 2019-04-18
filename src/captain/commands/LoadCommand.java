@@ -5,6 +5,7 @@ import captain.models.Contact;
 import captain.ui.ContactRow;
 import captain.ui.ContactList;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +16,7 @@ public class LoadCommand implements Command {
 
     public LoadCommand(ContactList contactList, Memento<List<Contact>> newContacts) {
         this.contactList = contactList;
-        this.oldContactRows = contactList.getContactRows();
+        this.oldContactRows = new ArrayList<>(contactList.getContactRows());
         this.newContactRows = newContacts.getState().stream().map(ContactRow::fromContact).collect(Collectors.toList());
     }
 

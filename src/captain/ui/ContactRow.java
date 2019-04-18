@@ -1,13 +1,15 @@
 package captain.ui;
 
 import captain.models.Contact;
+import captain.transformations.Acceptor;
+import captain.transformations.Visitor;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.util.function.Consumer;
 
-public class ContactRow extends Component {
+public class ContactRow extends Component implements Acceptor {
     private static final int NAME_LENGTH = 20;
     private static final int EMAIL_LENGTH = 30;
     private static final int NUMBER_LENGTH = 15;
@@ -148,5 +150,10 @@ public class ContactRow extends Component {
                 contact.getEmail(),
                 contact.getPhoneNumber()
         );
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

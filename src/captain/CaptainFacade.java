@@ -51,7 +51,7 @@ public class CaptainFacade {
     }
 
     private void copyContact(ContactRow contactRow) {
-        this.insertContact(contactRow.getContact().copy(), this.contactList.indexOf(contactRow) + 1);
+        this.insertContact(contactRow.getContact().clone(), this.contactList.indexOf(contactRow) + 1);
     }
 
     private void insertContact(Contact contact, int i) {
